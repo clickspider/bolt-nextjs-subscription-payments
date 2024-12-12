@@ -17,13 +17,14 @@ import ForgotPassword from "@/components/ui/AuthForms/ForgotPassword";
 import UpdatePassword from "@/components/ui/AuthForms/UpdatePassword";
 import SignUp from "@/components/ui/AuthForms/Signup";
 
-export default async function SignIn({
-  params,
-  searchParams,
-}: {
-  params: { id: string };
-  searchParams: { disable_button: boolean };
-}) {
+export default async function SignIn(
+  props: {
+    params: Promise<{ id: string }>;
+    searchParams: Promise<{ disable_button: boolean }>;
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const { allowOauth, allowEmail, allowPassword } = getAuthTypes();
   const viewTypes = getViewTypes();
   const redirectMethod = getRedirectMethod();
