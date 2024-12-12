@@ -1,24 +1,14 @@
-import Pricing from "@/components/ui/Pricing/Pricing";
-import { createClient } from "@/lib/utils/supabase/server";
-import {
-  getProducts,
-  getSubscription,
-  getUser,
-} from "@/lib/utils/supabase/queries";
-
-export default async function PricingPage() {
-  const supabase = await createClient();
-  const [user, products, subscription] = await Promise.all([
-    getUser(supabase),
-    getProducts(supabase),
-    getSubscription(supabase),
-  ]);
-
+export default function Home() {
   return (
-    <Pricing
-      user={user}
-      products={products ?? []}
-      subscription={subscription}
-    />
+    <div
+      style={{
+        maxWidth: 1280,
+        margin: "0 auto",
+        padding: "2rem",
+        textAlign: "center",
+      }}
+    >
+      Start prompting. Hello world! Testing!!
+    </div>
   );
 }
